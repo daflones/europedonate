@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /admin.html
+Disallow: /order.html
+Disallow: /thank-you.html

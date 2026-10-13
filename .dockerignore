@@ -1,0 +1,11 @@
+.git
+.openai
+.env
+.env.*
+node_modules
+tests
+docs
+supabase
+assets-originals
+*.zip
+*.tar.gz

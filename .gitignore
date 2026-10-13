@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+node_modules/
+*.zip
+*.tar.gz
+.DS_Store
+supabase/.temp/
+supabase/.branches/
+.openai/*.local.*
+*.log
