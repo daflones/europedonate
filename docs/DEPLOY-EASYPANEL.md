@@ -1,14 +1,13 @@
-# Hospedar com domínio .com
+# Hospedar — kindorapaws.site
 
 ## EasyPanel com Dockerfile
 
-1. Extraia o ZIP. Envie o conteúdo para seu repositório Git. O `Dockerfile` deve ficar na raiz do repositório, juntamente com a pasta `dist`.
-2. No EasyPanel crie um serviço **App**, escolha a origem Git e a branch correta.
+1. O código está no repositório `daflones/europedonate` (branch `main`). O `Dockerfile` fica na raiz, junto com a pasta `dist`.
+2. No EasyPanel crie um serviço **App**, origem Git → `daflones/europedonate`, branch `main`.
 3. Selecione **Dockerfile** como build. Porta interna do serviço: **80**. O container usa Nginx; não usa `npm start` dentro dessa imagem.
-4. Faça deploy e adicione o domínio .com com HTTPS. Se usar Cloudflare, crie o DNS apropriado para o servidor e configure SSL de ponta a ponta. Não use uma imagem que force conversão cambial ou local de recebedor diferente do real.
-5. No Supabase altere `SITE_URL` e `ALLOWED_ORIGINS` para o domínio final. Inclua o `www` apenas se ele também for usado. Remova `http://localhost:3000` do ambiente público quando concluir os testes locais.
-6. Em `dist/config.js` preencha `canonicalUrl` com a URL HTTPS final. Adicione canonical e metadados sociais absolutos de acordo com esse domínio.
-7. Configure a Stripe e os dados reais no painel. Verifique o checkout e o retorno no domínio final antes de abrir os anúncios.
+4. Faça deploy e aponte `kindorapaws.site` (e `www.kindorapaws.site`, se desejar) para o serviço com HTTPS ativado.
+5. Já configurado: `SITE_URL=https://kindorapaws.site` e `ALLOWED_ORIGINS=https://kindorapaws.site,https://www.kindorapaws.site` nos secrets da Edge Function; `canonical_url=https://kindorapaws.site` no banco e em `dist/config.js`.
+6. Verifique o checkout e o retorno da Stripe no domínio final antes de abrir os anúncios.
 
 ## Hospedagem estática
 
@@ -16,12 +15,7 @@ Você pode enviar **o conteúdo de `dist/`** para uma hospedagem estática comum
 
 ## Publicar para indexação
 
-Enquanto é prévia, todas as páginas usam `noindex` e `robots.txt` bloqueia indexação. Na campanha pública, depois de concluir as informações e verificar a operação:
-
-- Remova `noindex,nofollow` da página principal e das políticas públicas.
-- Mantenha `/admin.html` e `/thank-you.html` sem indexação.
-- Atualize `robots.txt` para permitir a página principal e bloquear `/admin`, `/admin.html`, `/thank-you` e `/thank-you.html`.
-- Crie um sitemap com o domínio final se necessário.
+Já aplicado para produção: as páginas públicas não usam `noindex`; `/admin.html`, `/order.html` e `/thank-you.html` seguem bloqueados no `robots.txt`. Crie um sitemap com o domínio final se necessário.
 
 ## Google Ads e Meta
 

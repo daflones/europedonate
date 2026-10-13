@@ -12,6 +12,5 @@ export const config = Object.freeze({
   // Optional support/adoption/volunteering URLs, supplied by the organisation.
   adoptionUrl: '',
   volunteerUrl: '',
-  // Replace this domain and enable indexing ONLY when the live campaign is ready.
-  canonicalUrl: ''
+  canonicalUrl: 'https://kindorapaws.site'
 });
